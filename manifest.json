@@ -1,0 +1,33 @@
+{
+   "name": "Insta Focus Mode Extensions",
+  "description": "Block Instagram Reels and help yourself focus.",
+  "version": "1.0",
+  "manifest_version": 3,
+  "permissions": ["storage","scripting","tabs"],
+  "action": {
+    "default_popup": "index.html"
+  },
+  "icons":{
+    "16": "icon32.png",
+    "32":"icon32.png",
+    "48": "icon32.png",
+    "128": "icon32.png"
+
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["src/content.jsx"],
+     "run_at": "document_end"
+    }
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["src/assets/work.png"],
+      "matches": ["https://www.instagram.com/*"]
+    }
+  ]
+}
